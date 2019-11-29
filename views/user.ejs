@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <style>
+        .top-table {
+            background-color: #FFFFFF;
+            border-bottom: 1px #AAAAAA solid;
+            border-top: 1px #AAAAAA solid;
+            padding: 10px 5px
+        }
+
+        .table {
+            background-color: #EEEEEE;
+            border-top: 1px #AAAAAA solid;
+            padding: 10px 5px;
+            margin: 0px;
+        }
+
+        .btn {
+            color: white
+        }
+
+        .navbar {
+            background: rgb(101, 125, 182);
+            background: linear-gradient(90deg, rgba(101, 125, 182, 1) 0%, rgba(0, 129, 199, 1) 50%, rgba(101, 125, 182, 1) 100%);
+            padding: 20px 125px;
+            font-weight: 800;
+        }
+
+        .title {
+            padding: 20px 0px;
+        }
+
+        .row {
+            width: 100%;
+        }
+
+        .input-row {
+            padding-bottom: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" style="color:white" href="/">WebStart Users</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+
+
+    <div class="row justify-content-md-center title">
+        <div class="col-10" style="font-size:30px;font-weight: bold;">
+            <%
+                if(action == "add") {
+                %>
+            New User
+            <% } else{
+            %>
+            User
+            <% } %>
+        </div>
+    </div>
+    <div class="row justify-content-md-center title">
+        <div class="col-10">
+            <form>
+                <div class="row input-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="name" <% if(action == 'update'){%>
+                            value="<%= users[userid].name %>" <% } %>>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="User name" <% if(action == 'update'){%>
+                            value="<%= users[userid].username %>" <% } %>>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="email" <% if(action == 'update'){%>
+                            value="<%= users[userid].email %>" <% } %>>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="phone" <% if(action == 'update'){%>
+                            value="<%= users[userid].phone %>" <% } %>>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Web site" <% if(action == 'update'){%>
+                            value="<%= users[userid].website %>" <% } %>>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <span>Adresse</span>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="street" <% if(action == 'update'){%>
+                            value="<%= users[userid].address.street %>" <% } %>>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="suite" <% if(action == 'update'){%>
+                            value="<%= users[userid].address.suite %>" <% } %>>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="city" <% if(action == 'update'){%>
+                            value="<%= users[userid].address.city %>" <% } %>>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="zip code" <% if(action == 'update'){%>
+                            value="<%= users[userid].address.zipcode %>" <% } %>>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="geo lat" <% if(action == 'update'){%>
+                            value="<%= users[userid].address.geo.lat %>" <% } %>>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="geo lng" <% if(action == 'update'){%>
+                            value="<%= users[userid].address.geo.lng %>" <% } %>>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <span>Compagny</span>
+                    </div>
+                </div>
+                <div class="row input-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="name" <% if(action == 'update'){%>
+                            value="<%= users[userid].company.name %>" <% } %>>
+                    </div>
+                    <div class="col">
+                        <input type="tex" class="form-control" placeholder="catchPhrase" <% if(action == 'update'){%>
+                            value="<%= users[userid].company.catchPhrase %>" <% } %>>
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="bs" <% if(action == 'update'){%>
+                            value="<%= users[userid].company.bs %>" <% } %>>
+                    </div>
+                </div>
+                <div class="row input-row justify-content-end">
+                    <div class="col-2">
+                        <%
+                            if(action == "add") {
+                            %>
+                        <a href="/" style="align-self: right;"><button type="button" class="btn btn-success"
+                                onclick="">ajouter</button></a>
+                        <% }
+                        if(action == "update"){
+                        %>
+                        <a href="/" style="align-self: right;"><button type="button" class="btn btn-success"
+                                onclick="">modifier</button></a>
+                        <% } %>
+                    </div>
+                    <%
+                    if(action == "update"){
+                        %>
+                    <div class="col">
+                        <button type="button" class="btn btn-danger"
+                            onclick="deleteUser(<%= users[userid].id%>)">suprimer</button>
+                    </div>
+                    <% } %>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/59b84f6fb8.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
