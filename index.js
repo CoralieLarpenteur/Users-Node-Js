@@ -244,12 +244,6 @@ app.get('/user', function (req, res) {
     var id = req.param("id");
     userid = id - 1
     res.render('user.ejs', { action: action, userid: userid, users: users });
-
-    function deleteUser(userid) {
-        delete users[userid]
-        console.log(userid + "deleted")
-    }
-
 });
 
 
